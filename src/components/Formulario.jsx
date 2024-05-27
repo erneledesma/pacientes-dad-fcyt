@@ -9,6 +9,8 @@ export const Formulario = () => {
     const [ fecha, setFecha ] = useState('')
     const [ sintomas, setSintomas ] = useState('')
 
+    const [ error, setError ] = useState(false)
+
     const handleSubmit = (e) => {
         e.preventDefault()
         
