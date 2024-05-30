@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import Error  from './Error'
 
-
-export const Formulario = () => {
+export const Formulario = ( { pacientes, setPacientes }) => {
 
     const [ nombre, setNombre ] = useState('')
     const [ propietario, setPropietario ] = useState('')
@@ -16,12 +16,31 @@ export const Formulario = () => {
         
         // Validacion del Formulario
          if( [nombre, propietario, email, fecha, sintomas].includes('') )  {
-            console.log('Todos los campos son obligatorios')
-          } else {
-            console.log('Hay almnos un campo vacio')
-          }
-    
-          console.log('Enviando Formulario')
+            console.log('hay al menos un campo vacio')
+
+            setError(true)
+            return
+          } 
+          setError(false)
+
+        // Crear el Objeto Pacintes
+        const objetoPaciente = {
+            nombre,
+            propietario,
+            email,
+            fecha,
+            sintomas
+        }
+
+        // Enviar el Objeto Paciente al State
+        setPacientes([...pacientes, objetoPaciente] )
+
+          // Reinicir el Formulario
+            setNombre('')
+            setPropietario('')
+            setEmail('')
+            setFecha('')
+            setSintomas('')
     }
 
   return (
@@ -37,6 +56,7 @@ export const Formulario = () => {
         onSubmit={ handleSubmit }
         className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
     >
+        { error && <Error><p>Todos los campos son Obligatorios</p></Error>}
         <div className="mb-5">
             <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
                 Nombre Mascota

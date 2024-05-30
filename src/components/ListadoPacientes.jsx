@@ -8,6 +8,15 @@ export const ListadoPacientes = () => {
         Administra tus {''}
         <span className="text-indigo-600 font-bold">Pacientes y Citas</span>
       </p>
+
+      {
+        // Listado de pacientes
+        ListadoPacientes.map( paciente => (
+          <Paciente
+            
+           />
+        ))
+      }
     </div>
   )
 }
