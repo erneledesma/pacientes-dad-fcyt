@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import './App.css'
 import { Formulario } from './components/Formulario'
@@ -18,7 +18,9 @@ function App() {
         setPacientes={setPacientes}
         pacientes={pacientes}
       />
-      <ListadoPacientes />
+      <ListadoPacientes
+        pacientes={pacientes}
+       />
     </div>
   </div>
    
